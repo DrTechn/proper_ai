@@ -1,35 +1,39 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import Script from 'next/script';
 
-export const metadata: Metadata = {
-  title: "PROP_AI | Real Estate for Everyone",
-  description:
-    "Find a home, rent, or invest — and run your real estate business on one platform. PROP_AI serves buyers, renters, investors, brokers, developers, agents, and property managers.",
-};
-
-import { LanguageProvider } from '@/context/LanguageContext';
-import WhatsAppButton from '@/components/WhatsAppButton';
-import ChatbotButton from '@/components/ChatbotButton';
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" dir="ltr">
+    <html lang="ar" dir="rtl">
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
       </head>
       <body>
-        <a href="#main-content" className="skip-link">
-          Skip to content
-        </a>
-        <LanguageProvider>
-          <main id="main-content">{children}</main>
-          <WhatsAppButton />
-          <ChatbotButton />
-        </LanguageProvider>
+        {children}
+        
+        <div id="n8n-chat"></div>
+        
+        <Script id="n8n-chat-init" type="module" strategy="afterInteractive">
+          {`
+            import('https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js').then(({ createChat }) => {
+              createChat({
+                webhookUrl: 'https://walaanasr.app.n8n.cloud/webhook/website-chat-trigger/chat',
+                loadPreviousSession: true,
+                defaultLanguage: 'ar',
+                initialMessages: [
+                  'مرحبًا 👋',
+                  'أنا مساعد PROP_AI العقاري. كيف يمكنني مساعدتك؟'
+                ],
+                i18n: {
+                  ar: {
+                    title: 'PROP_AI 🏡',
+                    subtitle: 'متواجدون 24/7 لمساعدتك',
+                    inputPlaceholder: 'اكتب سؤالك...',
+                    getStarted: 'ابدأ المحادثة'
+                  }
+                }
+              });
+            });
+          `}
+        </Script>
       </body>
     </html>
   );
