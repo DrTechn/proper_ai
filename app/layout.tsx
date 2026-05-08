@@ -1,13 +1,16 @@
 import Script from 'next/script';
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+import ChatWidget from '@/components/ChatWidget';
+
+export default function RootLayout({ children }) {
   return (
     <html lang="ar" dir="rtl">
-      <head>
-        <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
-      </head>
       <body>
         {children}
+        <ChatWidget />
+      </body>
+    </html>
+  );
         
         <div id="n8n-chat"></div>
         
