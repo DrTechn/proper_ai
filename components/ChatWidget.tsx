@@ -47,7 +47,7 @@ export default function ChatWidget() {
     import('https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js' as any)
       .then(({ createChat }) => {
         createChat({
-          webhookUrl: 'https://walaanasr.app.n8n.cloud/webhook/website-chat-trigger/chat',
+          webhookUrl: process.env.NEXT_PUBLIC_N8N_CHAT_URL || '',
           loadPreviousSession: true,
           defaultLanguage: 'ar',
           initialMessages: [
