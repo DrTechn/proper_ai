@@ -40,6 +40,27 @@ export default function N8NChatWidget() {
       subtree: true,
     });
 
+
+
+const removeOldGoldButton = () => {
+  document
+    .querySelectorAll('footer[aria-label*="Real estate"] > button, footer[aria-label*="open to everyone"] > button')
+    .forEach((el) => el.remove());
+};
+
+removeOldGoldButton();
+
+const oldButtonObserver = new MutationObserver(removeOldGoldButton);
+
+oldButtonObserver.observe(document.body, {
+  childList: true,
+  subtree: true,
+});
+    
+
+
+
+    
     const styleId = 'n8n-chat-style';
     const scriptId = 'n8n-chat-script';
 
