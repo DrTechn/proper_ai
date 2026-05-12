@@ -942,3 +942,11 @@ button[aria-label*="Real estate"] {
   opacity: 0 !important;
   pointer-events: none !important;
 }
+
+/* Hide old gold floating real-estate button */
+button[aria-label="Real estate – open to everyone"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
