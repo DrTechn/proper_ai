@@ -84,6 +84,7 @@ export default function N8NChatWidget() {
 
     return () => {
       observer.disconnect();
+      oldButtonObserver.disconnect();
     };
   }, []);
 
