@@ -3,7 +3,6 @@ import Hero from "@/components/Hero";
 import AudiencePicker from "@/components/AudiencePicker";
 import EntryPoints from "@/components/EntryPoints";
 import BusinessTypes from "@/components/BusinessTypes";
-import AIBroker from "@/components/AIBroker";
 import FeaturedSection from "@/components/FeaturedSection";
 import Agents from "@/components/Agents";
 import InteractiveMap from "@/components/InteractiveMap";
@@ -43,8 +42,6 @@ export default async function Home() {
 
       {/* Business platform preview */}
       <BusinessTypes variant="section" />
-
-      <AIBroker />
 
       <SiteFooter />
     </div>
