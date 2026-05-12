@@ -935,3 +935,10 @@ html[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
   .search-bar .field:last-of-type { border-bottom: none; }
   .search-bar .search-btn { width: 100%; margin-top: 6px; }
 }
+/* Hide old gold floating real-estate button */
+button[aria-label*="Real estate"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
