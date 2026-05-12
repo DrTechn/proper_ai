@@ -1,7 +1,5 @@
-
-
 import { LanguageProvider } from '@/context/LanguageContext';
-import N8NChatWidget from "./components/N8NChatWidget";
+import N8NChatWidget from '@/components/N8NChatWidget';
 import './globals.css';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -10,9 +8,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <LanguageProvider>
           {children}
-            <YourExistingWebsite />
-            <N8NChatWidget />
-       </LanguageProvider>
+          <N8NChatWidget />
+        </LanguageProvider>
       </body>
     </html>
   );
