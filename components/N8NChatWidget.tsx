@@ -4,20 +4,41 @@ import { useEffect } from 'react';
 
 export default function N8NChatWidget() {
   useEffect(() => {
-    // Remove old/background floating real-estate button
-    const removeOldFloatingButton = () => {
-      const oldButtons = document.querySelectorAll(
-        'button[aria-label*="Real estate"], button[aria-label*="open to everyone"]'
-      );
+    const removeOldGoldButton = () => {
+      const allButtons = Array.from(document.querySelectorAll('button'));
 
-      oldButtons.forEach((button) => {
-        button.remove();
+      allButtons.forEach((button) => {
+        const style = button.getAttribute('style') || '';
+        const aria = button.getAttribute('aria-label') || '';
+
+        const isOldGoldButton =
+          aria.includes('Real estate') ||
+          aria.includes('open to everyone') ||
+          style.includes('accent-gold') ||
+          (
+            style.includes('position: fixed') &&
+            style.includes('bottom: 30px') &&
+            style.includes('right: 30px') &&
+            style.includes('width: 64px') &&
+            style.includes('height: 64px')
+          );
+
+        if (isOldGoldButton) {
+          button.remove();
+        }
       });
     };
 
-    removeOldFloatingButton();
+    removeOldGoldButton();
 
-    const interval = window.setInterval(removeOldFloatingButton, 500);
+    const observer = new MutationObserver(() => {
+      removeOldGoldButton();
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
 
     const styleId = 'n8n-chat-style';
     const scriptId = 'n8n-chat-script';
@@ -61,7 +82,7 @@ export default function N8NChatWidget() {
     }
 
     return () => {
-      window.clearInterval(interval);
+      observer.disconnect();
     };
   }, []);
 
