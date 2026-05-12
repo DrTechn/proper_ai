@@ -4,6 +4,21 @@ import { useEffect } from 'react';
 
 export default function N8NChatWidget() {
   useEffect(() => {
+    // Remove old/background floating real-estate button
+    const removeOldFloatingButton = () => {
+      const oldButtons = document.querySelectorAll(
+        'button[aria-label*="Real estate"], button[aria-label*="open to everyone"]'
+      );
+
+      oldButtons.forEach((button) => {
+        button.remove();
+      });
+    };
+
+    removeOldFloatingButton();
+
+    const interval = window.setInterval(removeOldFloatingButton, 500);
+
     const styleId = 'n8n-chat-style';
     const scriptId = 'n8n-chat-script';
 
@@ -44,9 +59,11 @@ export default function N8NChatWidget() {
 
       document.body.appendChild(script);
     }
+
+    return () => {
+      window.clearInterval(interval);
+    };
   }, []);
 
   return null;
 }
-
-
