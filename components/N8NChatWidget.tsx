@@ -108,7 +108,9 @@ export default function N8NChatWidget() {
         createChat({
           webhookUrl: "https://recolor-hardcopy-curtly.ngrok-free.dev/webhook/024fb15e-9ab3-45f2-8095-1a33ad8d469d/chat",
           defaultLanguage: "ar",
-          initialMessages: [
+            mode: "window",
+           showWelcomeScreen: false,
+           initialMessages: [
             "👋 مرحبًا بك في شركة الرواد للعقارات",
             "معك أحمد، كيف ممكن أساعدك؟"
           ],
