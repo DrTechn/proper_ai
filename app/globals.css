@@ -935,24 +935,26 @@ html[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
   .search-bar .field:last-of-type { border-bottom: none; }
   .search-bar .search-btn { width: 100%; margin-top: 6px; }
 }
-/* Hide old gold floating button inside the real-estate footer */
-footer[aria-label*="Real estate"] > button,
-footer[aria-label*="open to everyone"] > button {
+/* FORCE REMOVE OLD FLOATING BUTTON */
+button[tabindex="0"],
+footer[aria-label*="Real estate"],
+footer[aria-label*="open to everyone"] {
   display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
 }
 
-/* KILL old golden AI Broker floating widget */
-footer[aria-label*="Real estate"],
-footer[aria-label*="open to everyone"],
-footer[style*="--ink"] {
+/* hide any old floating bubble */
+body > div button[style*="position: fixed"],
+body button[style*="position: fixed"] {
   display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  width: 0 !important;
-  height: 0 !important;
-  overflow: hidden !important;
+}
+
+/* keep only n8n widget visible */
+#n8n-chat,
+.n8n-chat,
+.n8n-chat-window,
+.n8n-chat-toggle {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: 999999 !important;
 }
