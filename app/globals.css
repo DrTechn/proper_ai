@@ -490,3 +490,43 @@ body button[style*="position: fixed"] {
   opacity: 1 !important;
   z-index: 999999 !important;
 }
+/* Fix n8n Arabic chat direction, font and visibility */
+#n8n-chat,
+.n8n-chat,
+.n8n-chat-window {
+  direction: rtl !important;
+  text-align: right !important;
+  font-family: 'Tajawal', 'Inter', sans-serif !important;
+}
+
+.n8n-chat-window * {
+  font-family: 'Tajawal', 'Inter', sans-serif !important;
+}
+
+.n8n-chat-header,
+.n8n-chat-window-header {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+.n8n-chat-header *,
+.n8n-chat-window-header * {
+  color: #ffffff !important;
+}
+
+.n8n-chat-message,
+.n8n-chat-message-markdown,
+.n8n-chat-message p {
+  direction: rtl !important;
+  text-align: right !important;
+  unicode-bidi: plaintext !important;
+  line-height: 1.8 !important;
+}
+
+.n8n-chat-input,
+.n8n-chat-input textarea,
+.n8n-chat-input input {
+  direction: rtl !important;
+  text-align: right !important;
+  font-family: 'Tajawal', 'Inter', sans-serif !important;
+}
