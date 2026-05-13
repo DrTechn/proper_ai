@@ -943,3 +943,16 @@ footer[aria-label*="open to everyone"] > button {
   opacity: 0 !important;
   pointer-events: none !important;
 }
+
+/* KILL old golden AI Broker floating widget */
+footer[aria-label*="Real estate"],
+footer[aria-label*="open to everyone"],
+footer[style*="--ink"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
